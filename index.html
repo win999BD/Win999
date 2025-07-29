@@ -17,9 +17,21 @@
   <header class="flex items-center justify-between px-4 py-3 bg-cyan-800 shadow-md relative">
     <!-- Logo -->
     <div class="text-2xl font-bold text-lime-400 drop-shadow">
-      WiN<span class="text-yellow-400">999</span>
-    </div>
+      WiN<span class="text-yellow-400">999</span><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WiN999 - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
 
+  <!-- Header -->
+  <header class="flex justify-between items-center px-4 py-3 bg-cyan-900 shadow-lg">
+    <h1 class="text-2xl font-bold text-yellow-300">WiN999</h1>
+    
     <!-- User Section -->
     <div id="user-section" class="hidden items-center gap-3 relative group">
       <!-- Balance -->
@@ -28,10 +40,8 @@
           <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
         </svg>
         <span>৳</span><span id="user-balance">0.00</span>
-        <button onclick="refreshBalance()" class="ml-2 text-green-400 hover:text-green-200">
-          <svg id="refresh-icon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M4 4v6h6M20 20v-6h-6M4 14a8 8 0 0112.9-6.3M20 10a8 8 0 01-12.9 6.3" />
-          </svg>
+        <button onclick="refreshBalance()" title="Refresh Balance" class="ml-1 text-green-300 hover:text-green-100">
+          <i class="fas fa-sync-alt"></i>
         </button>
       </div>
 
@@ -40,9 +50,43 @@
 
       <!-- Dropdown -->
       <div class="absolute right-0 top-12 hidden group-hover:block bg-cyan-950 border border-cyan-700 rounded-lg w-56 shadow-lg z-10 text-sm divide-y divide-cyan-800">
-        <!-- Menu Items Here -->
-        <!-- [unchanged dropdown links — same as yours] -->
-        <!-- Logout -->
+        <a href="#" class="flex items-center gap-3 px-4 py-2 hover:bg-cyan-800">
+          <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M5.121 17.804A13.937 13.937 0 0112 15c2.21 0 4.304.534 6.121 1.482M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          <span>Account Record</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-2 hover:bg-cyan-800">
+          <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <span>Betting Record</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-2 hover:bg-cyan-800">
+          <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M3 3v18h18" />
+            <path d="M9 15l3-3 4 4 5-5" />
+          </svg>
+          <span>Profit & Loss</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-2 hover:bg-cyan-800">
+          <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 8c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2s2-.9 2-2v-8c0-1.1-.9-2-2-2zm0-5c-2.76 0-5 2.24-5 5h2c0-1.66 1.34-3 3-3s3 1.34 3 3h2c0-2.76-2.24-5-5-5z" />
+          </svg>
+          <span>Deposit</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-2 hover:bg-cyan-800">
+          <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M3 10h11l-1.5-1.5m-3 0L14 3M10 21v-6m0 0L6.5 17M10 15l3.5 2" />
+          </svg>
+          <span>Withdrawal</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-2 hover:bg-cyan-800">
+          <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 1v22m11-11H1" />
+          </svg>
+          <span>Customer Service</span>
+        </a>
         <button onclick="logout()" class="w-full text-left flex items-center gap-3 px-4 py-2 hover:bg-red-600 text-red-400">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M17 16l4-4m0 0l-4-4m4 4H7" />
@@ -60,55 +104,33 @@
     </div>
   </header>
 
-  <!-- Main -->
-  <main class="flex-grow flex items-center justify-center text-center px-4">
-    <div>
-      <h1 class="text-4xl font-bold text-yellow-300 mb-3">Welcome to WiN999</h1>
-      <p class="text-gray-300 text-lg">Play & Win Real Bonus Everyday!</p>
-    </div>
+  <!-- Welcome Message -->
+  <main class="text-center py-12">
+    <h2 class="text-3xl font-bold text-yellow-400 mb-4">Welcome to WiN999</h2>
+    <p class="text-lg text-gray-300">Play & Win Real Bonus Everyday!</p>
   </main>
 
-  <!-- Script -->
   <script>
-    const userSection = document.getElementById("user-section");
-    const guestSection = document.getElementById("guest-section");
-    const balanceDisplay = document.getElementById("user-balance");
-
-    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-    const storedBalance = localStorage.getItem("balance");
-
-    if (isLoggedIn) {
-      userSection.classList.remove("hidden");
-      userSection.classList.add("flex");
-      guestSection.classList.add("hidden");
-
-      balanceDisplay.innerText = storedBalance ? parseFloat(storedBalance).toFixed(2) : "0.00";
-    } else {
-      userSection.classList.add("hidden");
-      guestSection.classList.remove("hidden");
-    }
-
     function refreshBalance() {
-      let current = parseFloat(localStorage.getItem("balance") || "1263.50");
-      const bonus = (Math.random() * 2).toFixed(2);
-      const newBalance = (current + parseFloat(bonus)).toFixed(2);
-      localStorage.setItem("balance", newBalance);
-      balanceDisplay.innerText = newBalance;
-
-      const icon = document.getElementById("refresh-icon");
-      icon.classList.add("animate-spin");
-      setTimeout(() => {
-        icon.classList.remove("animate-spin");
-      }, 1200); // 1.2 seconds spin
+      // Dummy balance update for now
+      const balance = (Math.random() * 1000).toFixed(2);
+      document.getElementById("user-balance").innerText = balance;
     }
 
     function logout() {
-      localStorage.removeItem("isLoggedIn");
-      localStorage.removeItem("userId");
-      localStorage.removeItem("balance");
-      alert("Logged out successfully!");
-      location.reload();
+      alert("Logged out!");
+      document.getElementById("user-section").classList.add("hidden");
+      document.getElementById("guest-section").classList.remove("hidden");
     }
+
+    // Simulated login: show user section and hide guest section
+    document.addEventListener("DOMContentLoaded", () => {
+      const isLoggedIn = true; // change this to false to test guest view
+      if (isLoggedIn) {
+        document.getElementById("user-section").classList.remove("hidden");
+        document.getElementById("guest-section").classList.add("hidden");
+      }
+    });
   </script>
 </body>
 </html>
