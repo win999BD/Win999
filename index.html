@@ -56,25 +56,26 @@
 
   <!-- JavaScript -->
   <script>
-    // Toggle this for demo; in real case use session/localStorage/token logic
-    const isLoggedIn = false; // true = show user, false = show login/register
-
     const userSection = document.getElementById('user-logged-in');
     const guestSection = document.getElementById('auth-buttons');
+
+    // Check if user is logged in (using localStorage)
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
     if (isLoggedIn) {
       userSection.classList.remove('hidden');
       userSection.classList.add('flex');
       guestSection.classList.add('hidden');
     } else {
+      userSection.classList.add('hidden');
       guestSection.classList.remove('hidden');
       guestSection.classList.add('flex');
-      userSection.classList.add('hidden');
     }
 
     function logout() {
+      localStorage.removeItem("isLoggedIn");
       alert("You have been logged out!");
-      // Replace this with actual logout logic
+      location.reload();
     }
   </script>
 
