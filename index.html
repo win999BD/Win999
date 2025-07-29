@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WiN999 - Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Menu Hover Fix for Mobile/Desktop */
+    .group:hover .group-hover\\:block {
+      display: block;
+    }
+  </style>
 </head>
 <body class="bg-cyan-900 text-white min-h-screen flex flex-col">
 
@@ -33,6 +39,8 @@
         <span>৳</span><span id="user-balance">0.13</span>
         <button class="text-green-400 hover:text-green-200 text-sm">&#x21bb;</button>
       </div>
+      <!-- Username -->
+      <div id="user-id" class="text-yellow-300 font-semibold text-sm"></div>
       <!-- Profile -->
       <img src="https://i.pravatar.cc/40" alt="User" class="w-10 h-10 rounded-full border-2 border-yellow-400" />
       <!-- Logout -->
@@ -58,14 +66,17 @@
   <script>
     const userSection = document.getElementById('user-logged-in');
     const guestSection = document.getElementById('auth-buttons');
+    const userId = localStorage.getItem("userId") || "Guest";
 
-    // Check if user is logged in (using localStorage)
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
     if (isLoggedIn) {
       userSection.classList.remove('hidden');
       userSection.classList.add('flex');
       guestSection.classList.add('hidden');
+
+      // Show User ID
+      document.getElementById("user-id").innerText = userId;
     } else {
       userSection.classList.add('hidden');
       guestSection.classList.remove('hidden');
@@ -74,6 +85,7 @@
 
     function logout() {
       localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("userId");
       alert("You have been logged out!");
       location.reload();
     }
