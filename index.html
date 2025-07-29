@@ -2,18 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Win999BD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WiN999 - Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-cyan-900">
+<body class="bg-cyan-900 text-white">
 
-  <header class="flex items-center justify-between px-4 py-3 bg-cyan-800 text-white relative">
-    
-    <!-- Menu Icon -->
+  <!-- Header -->
+  <header class="flex items-center justify-between px-4 py-3 bg-cyan-800 shadow-md">
+    <!-- Menu -->
     <div class="relative group">
       <button class="text-3xl">&#9776;</button>
-      <!-- Dropdown Menu -->
       <div class="absolute left-0 mt-2 hidden group-hover:block bg-white text-black rounded shadow-lg z-10 min-w-[150px]">
         <a href="#" class="block px-4 py-2 hover:bg-gray-200">Home</a>
         <a href="#" class="block px-4 py-2 hover:bg-gray-200">About</a>
@@ -22,23 +21,58 @@
     </div>
 
     <!-- Logo -->
-    <div class="text-2xl font-bold text-lime-400 drop-shadow-md">
-      WiN<span class="text-yellow-400">999</span>
+    <div class="text-2xl font-bold text-lime-400">
+      TK<span class="text-yellow-400">999</span>.COM
     </div>
 
-    <!-- Buttons -->
-    <div class="flex gap-2">
-      <!-- Login -->
-      <a href="login.html" class="bg-cyan-700 hover:bg-cyan-600 text-white font-medium px-4 py-2 rounded-lg">
-        Login
-      </a>
+    <!-- AUTH Section -->
 
-      <!-- Register -->
-      <a href="register.html" class="bg-yellow-400 hover:bg-yellow-300 text-orange-800 font-semibold px-4 py-2 rounded-lg shadow-md">
-        Register
-      </a>
+    <!-- 👤 Show this if user is LOGGED IN -->
+    <div id="user-logged-in" class="hidden items-center space-x-3">
+      <!-- Balance -->
+      <div class="bg-cyan-700 px-3 py-1 rounded-lg flex items-center gap-1 text-green-300 font-semibold">
+        <span>৳</span><span id="user-balance">0.13</span>
+        <button class="text-green-400 hover:text-green-200 text-sm">&#x21bb;</button>
+      </div>
+      <!-- Profile -->
+      <img src="https://i.pravatar.cc/40" alt="User" class="w-10 h-10 rounded-full border-2 border-yellow-400"/>
+      <!-- Logout -->
+      <button onclick="logout()" class="text-red-400 text-sm underline hover:text-red-300">Logout</button>
+    </div>
+
+    <!-- 🔐 Show this if user is NOT LOGGED IN -->
+    <div id="auth-buttons" class="flex gap-2">
+      <a href="login.html" class="bg-cyan-700 hover:bg-cyan-600 px-4 py-2 rounded-lg">Login</a>
+      <a href="register.html" class="bg-yellow-400 text-orange-900 font-bold hover:bg-yellow-300 px-4 py-2 rounded-lg">Register</a>
     </div>
   </header>
 
+  <!-- Content -->
+  <main class="p-6 text-center">
+    <h1 class="text-3xl font-bold text-yellow-300">Welcome to WiN999</h1>
+    <p class="mt-2 text-gray-300">Play & Win Real Bonus Everyday!</p>
+  </main>
+
+  <!-- Simulated login state (using JS for demo purpose) -->
+  <script>
+    // Simulate user login status
+    const isLoggedIn = true; // set to false to see guest view
+
+    const userSection = document.getElementById('user-logged-in');
+    const guestSection = document.getElementById('auth-buttons');
+
+    if (isLoggedIn) {
+      userSection.classList.remove('hidden');
+      guestSection.classList.add('hidden');
+    } else {
+      userSection.classList.add('hidden');
+      guestSection.classList.remove('hidden');
+    }
+
+    function logout() {
+      alert("You are now logged out!");
+      // In real app: redirect or remove session token
+    }
+  </script>
 </body>
 </html>
