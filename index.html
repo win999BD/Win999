@@ -38,26 +38,33 @@
 
       <!-- Dropdown -->
       <div class="absolute right-0 top-12 hidden group-hover:block bg-cyan-950 border border-cyan-700 rounded-lg w-56 shadow-lg z-10 text-sm divide-y divide-cyan-800">
-        <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-cyan-800">
-          <i class="fas fa-user-circle"></i> Account Record
+        <a href="#" class="flex items-center gap-3 px-4 py-2 hover:bg-cyan-800">
+          <i class="fas fa-user-circle w-5 text-yellow-400"></i>
+          <span>Account Record</span>
         </a>
-        <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-cyan-800">
-          <i class="fas fa-clipboard-list"></i> Betting Record
+        <a href="#" class="flex items-center gap-3 px-4 py-2 hover:bg-cyan-800">
+          <i class="fas fa-clipboard-list w-5 text-yellow-400"></i>
+          <span>Betting Record</span>
         </a>
-        <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-cyan-800">
-          <i class="fas fa-chart-bar"></i> Profit & Loss
+        <a href="#" class="flex items-center gap-3 px-4 py-2 hover:bg-cyan-800">
+          <i class="fas fa-chart-bar w-5 text-yellow-400"></i>
+          <span>Profit & Loss</span>
         </a>
-        <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-cyan-800">
-          <i class="fas fa-wallet"></i> Deposit
+        <a href="#" class="flex items-center gap-3 px-4 py-2 hover:bg-cyan-800">
+          <i class="fas fa-wallet w-5 text-yellow-400"></i>
+          <span>Deposit</span>
         </a>
-        <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-cyan-800">
-          <i class="fas fa-hand-holding-usd"></i> Withdrawal
+        <a href="#" class="flex items-center gap-3 px-4 py-2 hover:bg-cyan-800">
+          <i class="fas fa-hand-holding-usd w-5 text-yellow-400"></i>
+          <span>Withdrawal</span>
         </a>
-        <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-cyan-800">
-          <i class="fas fa-headset"></i> Customer Service
+        <a href="#" class="flex items-center gap-3 px-4 py-2 hover:bg-cyan-800">
+          <i class="fas fa-headset w-5 text-yellow-400"></i>
+          <span>Customer Service</span>
         </a>
-        <button onclick="logout()" class="w-full text-left flex items-center gap-2 px-4 py-2 hover:bg-red-600 text-red-400">
-          <i class="fas fa-sign-out-alt"></i> Logout
+        <button onclick="logout()" class="w-full text-left flex items-center gap-3 px-4 py-2 hover:bg-red-600 text-red-400">
+          <i class="fas fa-sign-out-alt w-5"></i>
+          <span>Logout</span>
         </button>
       </div>
     </div>
@@ -99,7 +106,7 @@
 
     function refreshBalance() {
       let current = parseFloat(localStorage.getItem("balance") || "1263.50");
-      const bonus = (Math.random() * 2).toFixed(2); // simulate bonus
+      const bonus = (Math.random() * 2).toFixed(2);
       const newBalance = (current + parseFloat(bonus)).toFixed(2);
       localStorage.setItem("balance", newBalance);
       balanceDisplay.innerText = newBalance;
