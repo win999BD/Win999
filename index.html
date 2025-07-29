@@ -25,25 +25,27 @@
     <!-- User Section -->
     <div id="user-section" class="hidden items-center gap-3 relative group">
       <!-- Balance -->
-      <div class="bg-cyan-700 px-3 py-1 rounded-lg flex items-center gap-1 text-green-300 font-semibold">
+      <div class="bg-cyan-700 px-3 py-1 rounded-lg flex items-center gap-2 text-green-300 font-semibold">
         <i class="fas fa-coins text-yellow-300"></i>
         <span>৳</span><span id="user-balance">0.00</span>
         <button onclick="refreshBalance()" class="text-green-400 hover:text-green-200 text-sm">
           <i class="fas fa-sync-alt"></i>
         </button>
       </div>
+
       <!-- Profile -->
       <img src="https://i.pravatar.cc/40" alt="User" class="w-10 h-10 rounded-full border-2 border-yellow-400 cursor-pointer" />
+
       <!-- Dropdown -->
       <div class="absolute right-0 top-12 hidden group-hover:block bg-cyan-950 border border-cyan-700 rounded-lg w-56 shadow-lg z-10 text-sm divide-y divide-cyan-800">
         <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-cyan-800">
-          <i class="fas fa-user"></i> Account Record
+          <i class="fas fa-user-circle"></i> Account Record
         </a>
         <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-cyan-800">
-          <i class="fas fa-file-invoice-dollar"></i> Betting Record
+          <i class="fas fa-clipboard-list"></i> Betting Record
         </a>
         <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-cyan-800">
-          <i class="fas fa-chart-line"></i> Profit & Loss
+          <i class="fas fa-chart-bar"></i> Profit & Loss
         </a>
         <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-cyan-800">
           <i class="fas fa-wallet"></i> Deposit
@@ -68,10 +70,10 @@
   </header>
 
   <!-- Main -->
-  <main class="flex-grow flex items-center justify-center">
-    <div class="text-center p-6">
+  <main class="flex-grow flex items-center justify-center text-center px-4">
+    <div>
       <h1 class="text-4xl font-bold text-yellow-300 mb-3">Welcome to WiN999</h1>
-      <p class="text-gray-300">Play & Win Real Bonus Everyday!</p>
+      <p class="text-gray-300 text-lg">Play & Win Real Bonus Everyday!</p>
     </div>
   </main>
 
@@ -79,27 +81,28 @@
   <script>
     const userSection = document.getElementById("user-section");
     const guestSection = document.getElementById("guest-section");
+    const balanceDisplay = document.getElementById("user-balance");
 
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-    const balance = localStorage.getItem("balance") || "1263.50";
+    const storedBalance = localStorage.getItem("balance");
 
     if (isLoggedIn) {
       userSection.classList.remove("hidden");
       userSection.classList.add("flex");
       guestSection.classList.add("hidden");
-      document.getElementById("user-balance").innerText = balance;
+
+      balanceDisplay.innerText = storedBalance ? parseFloat(storedBalance).toFixed(2) : "0.00";
     } else {
       userSection.classList.add("hidden");
       guestSection.classList.remove("hidden");
     }
 
     function refreshBalance() {
-      // Simulate real balance fetch from server (here we just + random 0.1–1.5)
       let current = parseFloat(localStorage.getItem("balance") || "1263.50");
-      const bonus = (Math.random() * 1.5 + 0.1).toFixed(2);
+      const bonus = (Math.random() * 2).toFixed(2); // simulate bonus
       const newBalance = (current + parseFloat(bonus)).toFixed(2);
       localStorage.setItem("balance", newBalance);
-      document.getElementById("user-balance").innerText = newBalance;
+      balanceDisplay.innerText = newBalance;
     }
 
     function logout() {
