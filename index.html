@@ -2,25 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WiN999 - Home</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .group:hover .group-hover\:block {
-      display: block;
-    }
-  </style>
-</head>
-<body class="bg-cyan-900 text-white min-h-screen flex flex-col">
-
-  <!-- Header -->
-  <header class="flex items-center justify-between px-4 py-3 bg-cyan-800 shadow-md relative">
-    <!-- Logo -->
-    <div class="text-2xl font-bold text-lime-400 drop-shadow">
-      WiN<span class="text-yellow-400">999</span><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WiN999 - Home</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -29,24 +10,25 @@
 <body class="bg-gray-900 text-white min-h-screen">
 
   <!-- Header -->
-  <header class="flex justify-between items-center px-4 py-3 bg-cyan-900 shadow-lg">
+  <header class="flex justify-between items-center px-4 py-3 bg-cyan-900 shadow-lg flex-wrap">
     <h1 class="text-2xl font-bold text-yellow-300">WiN999</h1>
     
     <!-- User Section -->
-    <div id="user-section" class="hidden items-center gap-3 relative group">
+    <div id="user-section" class="hidden items-center gap-3 relative group mt-2 sm:mt-0">
       <!-- Balance -->
-      <div class="bg-cyan-700 px-3 py-1 rounded-lg flex items-center gap-2 text-green-300 font-semibold">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
+      <div class="bg-cyan-700 px-3 py-1.5 rounded-lg flex items-center gap-1 sm:gap-2 text-green-300 font-semibold text-sm sm:text-base">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
         </svg>
-        <span>৳</span><span id="user-balance">0.00</span>
+        <span>৳</span>
+        <span id="user-balance">0.00</span>
         <button onclick="refreshBalance()" title="Refresh Balance" class="ml-1 text-green-300 hover:text-green-100">
-          <i class="fas fa-sync-alt"></i>
+          <i class="fas fa-sync-alt text-xs sm:text-sm"></i>
         </button>
       </div>
 
       <!-- Profile -->
-      <img src="https://i.pravatar.cc/40" alt="User" class="w-10 h-10 rounded-full border-2 border-yellow-400 cursor-pointer" />
+      <img src="https://i.pravatar.cc/40" alt="User" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-yellow-400 cursor-pointer" />
 
       <!-- Dropdown -->
       <div class="absolute right-0 top-12 hidden group-hover:block bg-cyan-950 border border-cyan-700 rounded-lg w-56 shadow-lg z-10 text-sm divide-y divide-cyan-800">
@@ -98,21 +80,20 @@
     </div>
 
     <!-- Guest Section -->
-    <div id="guest-section" class="flex gap-2">
-      <a href="login.html" class="bg-cyan-700 hover:bg-cyan-600 px-4 py-2 rounded-lg">Login</a>
-      <a href="register.html" class="bg-yellow-400 text-orange-900 font-bold hover:bg-yellow-300 px-4 py-2 rounded-lg">Register</a>
+    <div id="guest-section" class="flex gap-2 mt-2 sm:mt-0">
+      <a href="login.html" class="bg-cyan-700 hover:bg-cyan-600 px-4 py-2 rounded-lg text-sm sm:text-base">Login</a>
+      <a href="register.html" class="bg-yellow-400 text-orange-900 font-bold hover:bg-yellow-300 px-4 py-2 rounded-lg text-sm sm:text-base">Register</a>
     </div>
   </header>
 
   <!-- Welcome Message -->
-  <main class="text-center py-12">
+  <main class="text-center py-12 px-4">
     <h2 class="text-3xl font-bold text-yellow-400 mb-4">Welcome to WiN999</h2>
     <p class="text-lg text-gray-300">Play & Win Real Bonus Everyday!</p>
   </main>
 
   <script>
     function refreshBalance() {
-      // Dummy balance update for now
       const balance = (Math.random() * 1000).toFixed(2);
       document.getElementById("user-balance").innerText = balance;
     }
@@ -123,9 +104,8 @@
       document.getElementById("guest-section").classList.remove("hidden");
     }
 
-    // Simulated login: show user section and hide guest section
     document.addEventListener("DOMContentLoaded", () => {
-      const isLoggedIn = true; // change this to false to test guest view
+      const isLoggedIn = true;
       if (isLoggedIn) {
         document.getElementById("user-section").classList.remove("hidden");
         document.getElementById("guest-section").classList.add("hidden");
