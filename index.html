@@ -6,8 +6,8 @@
   <title>WiN999 - Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Menu Hover Fix for Mobile/Desktop */
-    .group:hover .group-hover\\:block {
+    /* Hover dropdown for desktop */
+    .group:hover .group-hover\:block {
       display: block;
     }
   </style>
@@ -15,46 +15,42 @@
 <body class="bg-cyan-900 text-white min-h-screen flex flex-col">
 
   <!-- Header -->
-  <header class="flex items-center justify-between px-4 py-3 bg-cyan-800 shadow-md">
+  <header class="flex items-center justify-between px-4 py-3 bg-cyan-800 shadow-md relative">
     
-    <!-- Menu -->
-    <div class="relative group">
-      <button class="text-3xl">&#9776;</button>
-      <div class="absolute left-0 mt-2 hidden group-hover:block bg-white text-black rounded shadow-lg z-10 min-w-[150px]">
-        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Home</a>
-        <a href="#" class="block px-4 py-2 hover:bg-gray-200">About</a>
-        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Contact</a>
-      </div>
-    </div>
-
     <!-- Logo -->
     <div class="text-2xl font-bold text-lime-400 drop-shadow">
       WiN<span class="text-yellow-400">999</span>
     </div>
 
     <!-- User Section -->
-    <div id="user-logged-in" class="hidden items-center space-x-3">
+    <div id="user-section" class="hidden items-center gap-3 relative group">
       <!-- Balance -->
       <div class="bg-cyan-700 px-3 py-1 rounded-lg flex items-center gap-1 text-green-300 font-semibold">
         <span>৳</span><span id="user-balance">0.13</span>
-        <button class="text-green-400 hover:text-green-200 text-sm">&#x21bb;</button>
+        <button onclick="refreshBalance()" class="text-green-400 hover:text-green-200 text-sm">&#x21bb;</button>
       </div>
-      <!-- Username -->
-      <div id="user-id" class="text-yellow-300 font-semibold text-sm"></div>
       <!-- Profile -->
-      <img src="https://i.pravatar.cc/40" alt="User" class="w-10 h-10 rounded-full border-2 border-yellow-400" />
-      <!-- Logout -->
-      <button onclick="logout()" class="text-red-400 text-sm underline hover:text-red-300">Logout</button>
+      <img src="https://i.pravatar.cc/40" alt="User" class="w-10 h-10 rounded-full border-2 border-yellow-400 cursor-pointer" />
+      <!-- Dropdown -->
+      <div class="absolute right-0 top-12 hidden group-hover:block bg-cyan-950 border border-cyan-700 rounded-lg w-48 shadow-lg z-10 text-sm">
+        <a href="#" class="block px-4 py-2 hover:bg-cyan-800">Account Record</a>
+        <a href="#" class="block px-4 py-2 hover:bg-cyan-800">Betting Record</a>
+        <a href="#" class="block px-4 py-2 hover:bg-cyan-800">Profit And Loss</a>
+        <a href="#" class="block px-4 py-2 hover:bg-cyan-800">Deposit</a>
+        <a href="#" class="block px-4 py-2 hover:bg-cyan-800">Withdrawal</a>
+        <a href="#" class="block px-4 py-2 hover:bg-cyan-800">Customer Service</a>
+        <button onclick="logout()" class="w-full text-left px-4 py-2 hover:bg-red-600 text-red-400">Logout</button>
+      </div>
     </div>
 
     <!-- Guest Section -->
-    <div id="auth-buttons" class="flex gap-2">
+    <div id="guest-section" class="flex gap-2">
       <a href="login.html" class="bg-cyan-700 hover:bg-cyan-600 px-4 py-2 rounded-lg">Login</a>
       <a href="register.html" class="bg-yellow-400 text-orange-900 font-bold hover:bg-yellow-300 px-4 py-2 rounded-lg">Register</a>
     </div>
   </header>
 
-  <!-- Main Content -->
+  <!-- Main -->
   <main class="flex-grow flex items-center justify-center">
     <div class="text-center p-6">
       <h1 class="text-4xl font-bold text-yellow-300 mb-3">Welcome to WiN999</h1>
@@ -62,31 +58,34 @@
     </div>
   </main>
 
-  <!-- JavaScript -->
   <script>
-    const userSection = document.getElementById('user-logged-in');
-    const guestSection = document.getElementById('auth-buttons');
-    const userId = localStorage.getItem("userId") || "Guest";
+    const userSection = document.getElementById("user-section");
+    const guestSection = document.getElementById("guest-section");
 
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    const balance = localStorage.getItem("balance") || "0.13";
 
     if (isLoggedIn) {
-      userSection.classList.remove('hidden');
-      userSection.classList.add('flex');
-      guestSection.classList.add('hidden');
-
-      // Show User ID
-      document.getElementById("user-id").innerText = userId;
+      userSection.classList.remove("hidden");
+      userSection.classList.add("flex");
+      guestSection.classList.add("hidden");
+      document.getElementById("user-balance").innerText = balance;
     } else {
-      userSection.classList.add('hidden');
-      guestSection.classList.remove('hidden');
-      guestSection.classList.add('flex');
+      userSection.classList.add("hidden");
+      guestSection.classList.remove("hidden");
+    }
+
+    function refreshBalance() {
+      const newBalance = (Math.random() * 10).toFixed(2); // demo random balance
+      localStorage.setItem("balance", newBalance);
+      document.getElementById("user-balance").innerText = newBalance;
     }
 
     function logout() {
       localStorage.removeItem("isLoggedIn");
       localStorage.removeItem("userId");
-      alert("You have been logged out!");
+      localStorage.removeItem("balance");
+      alert("Logged out successfully!");
       location.reload();
     }
   </script>
